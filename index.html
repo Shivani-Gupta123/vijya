@@ -18,16 +18,18 @@
 <body>
   <div class="hero">
     <div class="profile-picture">
-      <img src="cricket.jpg" alt="Anna Reddy">
+      <img style="margin-top: -20px; height: 100px; width: 100px;" src="cricket.jpg" alt="cricket">
     </div>
    
     <div class="content">
       <h1 class="heading1">👑Cricket Champion👑</h1>
-      <h2 class="h2">Cricket Ka Asli King</h2>
+      <div class="subscriber-counter">
+        <p id="subscriber-count" style="margin: 18px ;font-size: 25px;font-weight: bold; color: white;"><b>74,028  Subscribers</b></p>
+      </div>
     </div>
     
     <br>
-    <div style="margin: 0px 15px;" class="button">
+    <div style="margin: 0px 15px; margin-top: -40px;" class="button">
       <a href="https://t.me/+gStnj2842aQ5M2Q1" class="btn btn--stripe">
         Join Cricket Ka Sabse Bada Tipper <i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
     </div>
@@ -46,6 +48,28 @@
         SUBSCRIBE FOR FREE <i class="fa-brands fa-telegram" aria-hidden="true"></i></a>
     </div>
   </div>
+ <script>
+   const targetCount = 74028; // Target subscriber count
+  const duration = 10000; // Duration of the counting effect in milliseconds (e.g., 3 seconds)
+  const displayElement = document.getElementById('subscriber-count');
+  
+  let startTimestamp = null;
+  
+  function countUp(timestamp) {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = timestamp - startTimestamp;
+    const currentCount = Math.min(Math.floor((progress / duration) * targetCount), targetCount);
+    
+    // Format the count with a comma for thousands and display it
+    displayElement.textContent = `${currentCount.toLocaleString()} Subscribers`;
+  
+    if (currentCount < targetCount) {
+      requestAnimationFrame(countUp);
+    }
+  }
+    // Start the animation
+    requestAnimationFrame(countUp);
+ </script>
 
 </body>
 </html>
